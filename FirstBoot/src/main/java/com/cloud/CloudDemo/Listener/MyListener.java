@@ -7,8 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.cloud.CloudDemo.SpringBootTest;
-
 /**
  * 初始化123
  * @author Administrator
