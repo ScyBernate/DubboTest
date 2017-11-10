@@ -2,18 +2,15 @@ package com.cloud.CloudDemo.Listener;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
  * 初始化123
  * @author Administrator
  *
  */
-@SpringBootApplication
-@EnableAutoConfiguration
+@WebListener
 public class MyListener implements ServletContextListener {
 
 	@Override
@@ -27,9 +24,4 @@ public class MyListener implements ServletContextListener {
 		System.out.println("ServletContextListener初始化成功!");
 	}
 
-	public static void main(String[] args) {
-		System.out.println("SpringBoot应用启动.......");
-		
-		SpringApplication.run(MyListener.class, args);
-	}
 }

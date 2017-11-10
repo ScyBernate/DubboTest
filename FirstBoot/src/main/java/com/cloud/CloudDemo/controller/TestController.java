@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cloud.CloudDemo.bean.User;
+import com.cloud.CloudDemo.model.User;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -32,7 +32,7 @@ public class TestController {
  
 	 @RequestMapping(value="/getUser",method=RequestMethod.GET)
 	 public User getUser(@RequestHeader("username") String username, @RequestParam("password") String password) {
-	     return new User(username,password);
+	     return new User();
 	 }
 	
 
