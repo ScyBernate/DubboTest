@@ -15,6 +15,11 @@ import com.cloud.CloudDemo.Service.auth.AuthService;
 import com.cloud.CloudDemo.config.security.JwtAuthenticationRequest;
 import com.cloud.CloudDemo.model.User;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+
 /**
  * 
   * @ClassName: AuthController
@@ -25,6 +30,7 @@ import com.cloud.CloudDemo.model.User;
   *       只有超过它设置的expire时间，它才能自动失效（当前设置失效时间为1分钟）
   *
  */
+@Api("AuthController相关api")
 @RestController
 public class AuthController {
     @Value("${jwt.header}")
@@ -33,6 +39,9 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
+    @ApiOperation("获取token")
+	@ApiResponses({ @ApiResponse(code = 400, message = "请求参数没填好"),
+			@ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对") })
     @RequestMapping(value = "${jwt.route.authentication.path}", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtAuthenticationRequest authenticationRequest) throws AuthenticationException{
         final String token = authService.login(authenticationRequest.getUsername(), authenticationRequest.getPassword());
@@ -40,6 +49,9 @@ public class AuthController {
         return ResponseEntity.ok(token);
     }
 
+    @ApiOperation("刷新token")
+  	@ApiResponses({ @ApiResponse(code = 400, message = "请求参数没填好"),
+  			@ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对") })
     @RequestMapping(value = "${jwt.route.authentication.refresh}", method = RequestMethod.GET)
     public ResponseEntity<?> refreshAndGetAuthenticationToken(
             HttpServletRequest request) throws AuthenticationException{
@@ -52,6 +64,9 @@ public class AuthController {
         }
     }
     
+    @ApiOperation("注册用户")
+  	@ApiResponses({ @ApiResponse(code = 400, message = "请求参数没填好"),
+  			@ApiResponse(code = 404, message = "请求路径没有或页面跳转路径不对") })
     @RequestMapping(value = "${jwt.route.authentication.register}", method = RequestMethod.POST)
     public User register(@RequestBody User user) throws AuthenticationException{
         return authService.register(user);
