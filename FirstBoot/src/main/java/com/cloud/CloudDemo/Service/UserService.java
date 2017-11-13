@@ -21,19 +21,23 @@ public class UserService {
 	@Autowired
 	private UserDao userDao;
 	
-	public List<User> findAll(Pageable pageable){
+	public Page<User> findAll(Pageable pageable){
 		Page<User> page = userDao.findAll(pageable);
-		return page.getContent();
+		return page;
 	}
 	
-	public List<User> findMaleList(String sex, Pageable page){
-		return userDao.findMaleList(sex, page);
+	public List<User> findMaleList(String sex){
+		return userDao.findMaleList(sex);
 	}
 	
 	@Transactional(readOnly=false)
 	public void insetUser(User user){
 		userDao.save(user);
-		System.out.println("保存后改用户的id为：-->"+user.getId());
+	}
+	
+	public User findByUsername(String name){
+		return userDao.findByUsername(name);
+		
 	}
 	
 }

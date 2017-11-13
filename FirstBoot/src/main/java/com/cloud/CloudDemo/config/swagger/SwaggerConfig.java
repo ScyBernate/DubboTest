@@ -1,7 +1,6 @@
-package com.cloud.CloudDemo.config;
+package com.cloud.CloudDemo.config.swagger;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -28,7 +27,6 @@ import static springfox.documentation.builders.PathSelectors.regex;
 
 @Configuration
 @EnableSwagger2
-@ComponentScan("com.cloud.CloudDemo.controller")
 public class SwaggerConfig {
 
 	@Bean
@@ -58,4 +56,5 @@ public class SwaggerConfig {
 			}
 		};
 	}
+	
 }

@@ -1,4 +1,4 @@
-package com.cloud.CloudDemo.config.base;
+package com.cloud.CloudDemo.config.base.druid;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

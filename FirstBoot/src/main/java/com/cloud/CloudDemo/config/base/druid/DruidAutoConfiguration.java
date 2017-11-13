@@ -1,4 +1,4 @@
-package com.cloud.CloudDemo.config.base;
+package com.cloud.CloudDemo.config.base.druid;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.slf4j.Logger;

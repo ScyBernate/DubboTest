@@ -1,18 +1,27 @@
 package com.cloud.CloudDemo.model;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "t_user")
-public class User {
+public class User implements Serializable{
+	
+	private static final long serialVersionUID = 6862316738890077206L;
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -55,15 +64,29 @@ public class User {
 
 	@Column(name = "update_time")
 	private Date updateTime;
+	
+	@Column(name = "lastPasswordResetDate")
+	private Date lastPasswordResetDate;
 
-	@Column(name = "disabled")
-	private Integer disabled;
+	/**
+	 * 0-禁用
+	 * 1-启用
+	 * 2-锁定
+	 * 3-过期
+	 */
+	@Column(name = "status")
+	private Integer status;
 
 	@Column(name = "theme")
 	private String theme;
 
 	@Column(name = "is_ldap")
 	private Integer isLdap;
+	
+	@ManyToMany(cascade={CascadeType.REFRESH},fetch=FetchType.EAGER)
+	@JoinTable(name="t_user_role",joinColumns={@JoinColumn(name="user_id",referencedColumnName="id")}
+		,inverseJoinColumns={@JoinColumn(name="role_id",referencedColumnName="id")})
+	private Set<Role> roles;
 
 	public String getName() {
 		return name;
@@ -73,7 +96,6 @@ public class User {
 		this.name = name;
 	}
 
-	@JsonIgnore
 	public String getPassword() {
 		return password;
 	}
@@ -162,12 +184,12 @@ public class User {
 		this.updateTime = updateTime;
 	}
 
-	public Integer getDisabled() {
-		return disabled;
+	public Integer getStatus() {
+		return status;
 	}
 
-	public void setDisabled(Integer disabled) {
-		this.disabled = disabled;
+	public void setStatus(Integer status) {
+		this.status = status;
 	}
 
 	public String getTheme() {
@@ -202,12 +224,28 @@ public class User {
 		this.sex = sex;
 	}
 
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
+	public Date getLastPasswordResetDate() {
+		return lastPasswordResetDate;
+	}
+
+	public void setLastPasswordResetDate(Date lastPasswordResetDate) {
+		this.lastPasswordResetDate = lastPasswordResetDate;
+	}
+
 	public User() {
 	}
 
 	public User(String name, String password, String username, Integer divisionId, String sex, String email,
 			String mobilephone, String telephone, Integer userType, String createBy, Date createTime, String updateBy,
-			Date updateTime, Integer disabled, String theme, Integer isLdap) {
+			Date updateTime, Integer status, String theme, Integer isLdap, Date lastPasswordResetDate) {
 		super();
 		this.name = name;
 		this.password = password;
@@ -222,9 +260,10 @@ public class User {
 		this.createTime = createTime;
 		this.updateBy = updateBy;
 		this.updateTime = updateTime;
-		this.disabled = disabled;
+		this.status = status;
 		this.theme = theme;
 		this.isLdap = isLdap;
+		this.lastPasswordResetDate = lastPasswordResetDate;
 	}
 
 }

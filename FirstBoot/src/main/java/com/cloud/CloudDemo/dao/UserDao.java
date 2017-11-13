@@ -2,7 +2,6 @@ package com.cloud.CloudDemo.dao;
 
 import java.util.List;
 
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -15,7 +14,7 @@ public interface UserDao extends PagingAndSortingRepository<User, Long>, JpaSpec
     User findByUsername(String username);
 
     @Query("from User t where sex = :sex")
-    List<User> findMaleList(@Param("sex") String sex, Pageable pageable);
+    List<User> findMaleList(@Param("sex") String sex);
     
 
 }
