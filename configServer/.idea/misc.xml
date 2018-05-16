@@ -10,6 +10,7 @@
         <option value="$PROJECT_DIR$/../configClient/pom.xml" />
         <option value="$PROJECT_DIR$/../FirstBoot/pom.xml" />
         <option value="$PROJECT_DIR$/../SpringBootSecurityJwt/pom.xml" />
+        <option value="$PROJECT_DIR$/../../Eureka/pom.xml" />
       </list>
     </option>
   </component>
