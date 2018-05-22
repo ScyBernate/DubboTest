@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="configClient" />
+        <module name="configServer7001" />
+        <module name="ConsumerService-7001" />
+        <module name="Eureka" />
+        <module name="ProviderService-8003" />
+        <module name="Zuulapigateaway1003" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="configClient" target="1.6" />
+      <module name="configServer7001" target="1.6" />
+      <module name="ConsumerService-8001" target="1.8" />
+      <module name="Eureka" target="1.8" />
+      <module name="FeignClient1" target="1.8" />
+      <module name="ProviderService-8002" target="1.8" />
+      <module name="ProviderService-8003" target="1.8" />
+      <module name="SpringBootSecurityJwt" target="1.8" />
+      <module name="Zuulapigateaway1003" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

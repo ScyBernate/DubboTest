@@ -5,7 +5,10 @@
 	<groupId>com.cloud</groupId>
 	<artifactId>SpringBootSecurityJwt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <modules>
+        <module>../Zuulapigateaway1003</module>
+    </modules>
+    <packaging>pom</packaging>
 
 	<name>CloudDemo</name>
 	<url>http://maven.apache.org</url>

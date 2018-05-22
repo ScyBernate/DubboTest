@@ -10,6 +10,7 @@ public class EurekaApplication {
 
 	public static void main(String[] args) {
 		new SpringApplicationBuilder(EurekaApplication.class).web(true).run(args);
+
 	}
 
 }
