@@ -15,6 +15,8 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
+import javax.validation.constraints.Null;
+
 @RestController
 @RequestMapping("test")
 @Api("testController相关api")
@@ -34,6 +36,14 @@ public class TestController {
 	 public User getUser(@RequestHeader("username") String username, @RequestParam("password") String password) {
 	     return new User();
 	 }
-	
+
+    @RequestMapping(value="/testException",method=RequestMethod.GET)
+	 public User testException(){
+        int i = 0;
+        if(i==0){
+            throw new RuntimeException();
+        }
+        return new User();
+     }
 
 }

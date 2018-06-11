@@ -5,9 +5,6 @@
 	<groupId>com.cloud</groupId>
 	<artifactId>SpringBootSecurityJwt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-    <modules>
-        <module>../Zuulapigateaway1003</module>
-    </modules>
     <packaging>pom</packaging>
 
 	<name>CloudDemo</name>
@@ -108,7 +105,12 @@
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.39</version>
+        </dependency>
+    </dependencies>
 	<build>
 		<plugins>
 			<plugin>
